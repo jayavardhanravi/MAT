@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+<global>
+ <constant>
+  <constant-name>userid</constant-name> 
+  <constant-value>^[a-zA-Z0-9]*$</constant-value> 
+  </constant>
+  <constant>
+  <constant-name>password</constant-name> 
+  <constant-value>^[a-zA-Z0-9]*$</constant-value> 
+  </constant>
+ </global>
+    
+<formset>
+<form name="EventForm">            
+<field property="bn_name"  depends="required,mask,,minlength,maxlength">
+
+ <msg name="required" key="register.error.userid.required" /> 
+  <msg name="mask" key="register.error.userid.invalid" /> 
+  <msg name="minlength" key="register.error.userid.minlength" /> 
+  <msg name="maxlength" key="register.error.userid.maxlength" /> 
+ 
+<var>
+  <var-name>mask</var-name>
+  <var-value>${userid}</var-value>
+  </var>
+   <var>
+                <var-name>minlength</var-name>
+                <var-value>5</var-value>
+                
+                </var>
+                 <var>
+                <var-name>maxlength</var-name>
+                <var-value>30</var-value>
+                
+                </var>
+</field> 
+<field property="bn_password" depends="required,minlength,mask,maxlength">
+  <msg name="required" key="register.error.password.required" /> 
+  <msg name="mask" key="register.error.password.invalid" /> 
+  <msg name="minlength" key="register.error.password.minlength" /> 
+  <msg name="maxlength" key="register.error.password.maxlength" /> 
+ <var>
+  <var-name>mask</var-name> 
+  <var-value>${password}</var-value> 
+  </var>
+ <var>
+  <var-name>minlength</var-name> 
+  <var-value>8</var-value> 
+  </var>
+ <var>
+  <var-name>maxlength</var-name> 
+  <var-value>20</var-value> 
+  </var>
+  </field>
+  
+  <field property="bn_cpwd" depends="required,validwhen">
+  <msg name="required" key="register.error.cpassword.required" /> 
+  <msg name="validwhen" key="register.error.password.mismatchpwd" /> 
+ <var>
+  <var-name>test</var-name> 
+  <var-value>(bn_password ==*this*)</var-value> 
+  </var>
+  </field>
+  
+<field property="bn_address" depends="required,mask,minlength">
+<msg name="required" key="register.error.address.required" /> 
+  <msg name="mask" key="register.error.address.invalid" /> 
+  <msg name="minlength" key="register.error.address.minlength" /> 
+  
+<var>
+<var-name>mask</var-name>
+<var-value>^[a-zA-Z0-9\_]*$</var-value>
+</var>
+<var>
+  <var-name>minlength</var-name> 
+  <var-value>20</var-value> 
+  </var>
+ </field>
+ 
+ <field property="bn_email" depends="required,email">
+ <msg name="required" key="register.error.email.required" /> 
+  <msg name="email" key="register.error.email.email" /> 
+</field>
+
+<field property="bn_contact" depends="required,integer">
+ <msg name="required" key="register.error.contact.required" /> 
+  <msg name="integer" key="register.error.contact.integer" /> 
+</field>
+
+
+</form>
+
+<!--validations for forgot password-->
+
+<form name="ForgotPassword1">  
+
+<field property="newpwd" depends="required,minlength,mask,maxlength,validwhen">
+  <msg name="required" key="fp.error.password.required" /> 
+  <msg name="mask" key="fp.error.password.invalid" /> 
+  <msg name="minlength" key="fp.error.password.minlength" /> 
+  <msg name="maxlength" key="fp.error.password.maxlength" /> 
+  <msg name="validwhen" key="fp.error.password.mismatchold" /> 
+ <var>
+  <var-name>mask</var-name> 
+  <var-value>${password}</var-value> 
+  </var>
+ <var>
+  <var-name>minlength</var-name> 
+  <var-value>8</var-value> 
+  </var>
+ <var>
+  <var-name>maxlength</var-name> 
+  <var-value>20</var-value> 
+  </var>
+  <var>
+  <var-name>test</var-name> 
+  <var-value>(password!=*this*)</var-value> 
+  </var>
+  </field>
+  
+  <field property="renewpwd" depends="required,validwhen">
+  <msg name="required" key="fp.error.cpassword.required" /> 
+  <msg name="validwhen" key="fp.error.cpassword.mismatchpwd" /> 
+ <var>
+  <var-name>test</var-name> 
+  <var-value>(newpwd ==*this*)</var-value> 
+  </var>
+  </field>
+  <field property="security_A"  depends="required,mask,validwhen">
+
+ <msg name="required" key="fp.error.sa.required" /> 
+  <msg name="mask" key="fp.error.sa.invalid" /> 
+ <msg name="validwhen" key="fp.error.sa.mismatchpwd" /> 
+ <var>
+  <var-name>test</var-name> 
+  <var-value>(cSecurity_A ==*this*)</var-value> 
+  </var>
+<var>
+  <var-name>mask</var-name>
+  <var-value>${userid}</var-value>
+  </var>
+  
+</field> 
+</form>
+
+<form name="SecurityForm"> 
+  <field property="security_A"  depends="required,mask">
+
+ <msg name="required" key="security.error.sa.required" /> 
+  <msg name="mask" key="security.error.sa.invalid" /> 
+ 
+<var>
+  <var-name>mask</var-name>
+  <var-value>${userid}</var-value>
+  </var>
+  
+</field> 
+</form>
+
+
+<form name="ForgotPassword"> 
+<field property="user_id"  depends="required,mask">
+
+ <msg name="required" key="fpuser.error.userid.required" /> 
+  <msg name="mask" key="fpuser.error.userid.invalid" /> 
+  
+ 
+<var>
+  <var-name>mask</var-name>
+  <var-value>${userid}</var-value>
+  </var>
+   
+</field> 
+</form>
+
+<form name="LoginForm">            
+	<field property="user_id"  depends="required,mask,,minlength,maxlength">
+	<msg name="required" key="login.error.userid.required"/>
+	<msg name="mask" key="login.error.userid.invalid"/>
+	<msg name="minlength" key="login.error.userid.minlength"/>
+	<msg name="maxlength" key="login.error.userid.maxlength"/>
+		<var>
+  			<var-name>mask</var-name>
+ 	 		<var-value>${userid}</var-value>
+  		</var>
+   		<var>
+             <var-name>minlength</var-name>
+             <var-value>6</var-value>
+        </var>
+        <var>
+             <var-name>maxlength</var-name>
+             <var-value>10</var-value>
+        </var>
+</field> 
+<field property="password" depends="required,minlength,mask,maxlength"> 
+	<msg name="required" key="login.error.password.required"/>
+	<msg name="mask" key="login.error.password.invalid"/>
+	<msg name="minlength" key="login.error.password.minlength"/>
+	<msg name="maxlength" key="login.error.password.maxlength"/>
+		<var>
+  			<var-name>mask</var-name>
+  			<var-value>${password}</var-value>
+  		</var>
+  		<var>
+  			<var-name>minlength</var-name>
+  			<var-value>8</var-value>
+  		</var>
+  		<var>
+  			<var-name>maxlength</var-name>
+  			<var-value>20</var-value>
+  		</var>
+
+</field>
+
+
+</form>
+<form name="ChangePwdVal">            
+<field property="password" depends="required,minlength,mask,maxlength"> 
+	<msg name="required" key="login.error.password.required"/>
+	<msg name="mask" key="login.error.password.invalid"/>
+	<msg name="minlength" key="login.error.password.minlength"/>
+	<msg name="maxlength" key="login.error.password.maxlength"/>
+		<var>
+  			<var-name>mask</var-name>
+  			<var-value>${password}</var-value>
+  		</var>
+  		<var>
+  			<var-name>minlength</var-name>
+  			<var-value>8</var-value>
+  		</var>
+  		<var>
+  			<var-name>maxlength</var-name>
+  			<var-value>20</var-value>
+  		</var>
+
+</field>
+<field property="newpwd" depends="required,minlength,mask,maxlength,validwhen"> 
+	<msg name="required" key="login.error.password.required"/>
+	<msg name="mask" key="login.error.password.invalid"/>
+	<msg name="minlength" key="login.error.password.minlength"/>
+	<msg name="maxlength" key="login.error.password.maxlength"/>
+	<msg name="validwhen" key="login.error.password.mismatchpwd"/>
+		<var>
+  			<var-name>mask</var-name>
+  			<var-value>${password}</var-value>
+  		</var>
+  		<var>
+  			<var-name>minlength</var-name>
+  			<var-value>8</var-value>
+  		</var>
+  		<var>
+  			<var-name>maxlength</var-name>
+  			<var-value>20</var-value>
+  		</var>
+  		<var>
+  		<var-name>test</var-name>
+          <var-value>(password !=*this*)</var-value>
+        </var>
+
+</field>
+<field property="renewpwd" depends="required,minlength,mask,maxlength,validwhen"> 
+	<msg name="required" key="login.error.password.required"/>
+	<msg name="mask" key="login.error.password.invalid"/>
+	<msg name="minlength" key="login.error.password.minlength"/>
+	<msg name="maxlength" key="login.error.password.maxlength"/>
+	<msg name="validwhen" key="login.error.password.mismatch"/>
+		<var>
+  			<var-name>mask</var-name>
+  			<var-value>${password}</var-value>
+  		</var>
+  		<var>
+  			<var-name>minlength</var-name>
+  			<var-value>8</var-value>
+  		</var>
+  		<var>
+  			<var-name>maxlength</var-name>
+  			<var-value>20</var-value>
+  		</var>
+		<var>
+        <var-name>test</var-name>
+          <var-value>(newpwd ==*this*)</var-value>
+        </var>
+		
+</field>
+</form>
+
+<form name="RegisterForm">  
+
+<field property="bean_security_A"  depends="required">
+ <msg name="required" key="register.error.securityA.required" /> 
+  <msg name="mask" key="register.error.securityA.invalid" /> 
+<var>
+<var-name>mask</var-name>
+<var-value>^[a-zA-Z0-9]*$</var-value>
+</var>
+</field>
+
+<field property="bean_fname"  depends="required,mask,minlength,maxlength">
+
+ <msg name="required" key="register.error.fname.required" /> 
+  <msg name="mask" key="register.error.fname.invalid" /> 
+  <msg name="minlength" key="register.error.fname.minlength" /> 
+  <msg name="maxlength" key="register.error.fname.maxlength" /> 
+ 
+<var>
+  <var-name>mask</var-name>
+  <var-value>^[a-zA-Z]*$</var-value>
+  </var>
+   <var>
+                <var-name>minlength</var-name>
+                <var-value>8</var-value>
+                
+                </var>
+                 <var>
+                <var-name>maxlength</var-name>
+                <var-value>30</var-value>
+                
+                </var>
+</field> 
+
+<field property="bean_lname"  depends="required,mask,maxlength">
+
+ <msg name="required" key="register.error.lname.required" /> 
+  <msg name="mask" key="register.error.lname.invalid" /> 
+  <msg name="maxlength" key="register.error.lname.maxlength" /> 
+ 
+<var>
+  <var-name>mask</var-name>
+  <var-value>^[a-zA-Z]*$</var-value>
+  </var>
+  
+                 <var>
+                <var-name>maxlength</var-name>
+                <var-value>30</var-value>
+                
+                </var>
+</field> 
+
+<field property="bean_age" depends="required,integer">
+ <msg name="required" key="register.error.age.required" /> 
+  <msg name="integer" key="register.error.age.integer" /> 
+</field>
+
+ <field property="bean_houseno"  depends="required,mask,minlength,maxlength">
+
+ <msg name="required" key="register.error.hn.required" /> 
+  <msg name="mask" key="register.error.hn.invalid" /> 
+  <msg name="minlength" key="register.error.hn.minlength" /> 
+  <msg name="maxlength" key="register.error.hn.maxlength" /> 
+ 
+<var>
+  <var-name>mask</var-name>
+  <var-value>^[a-zA-Z0-9\s,-/]*$</var-value>
+  </var>
+  <var>
+                <var-name>minlength</var-name>
+                <var-value>10</var-value>
+                
+                </var>
+                 <var>
+                <var-name>maxlength</var-name>
+                <var-value>30</var-value>
+                
+                </var>
+</field> 
+
+<field property="bean_emailId" depends="required,email">
+ <msg name="required" key="register.error.email.required" /> 
+  <msg name="email" key="register.error.email.email" /> 
+</field>
+
+<field property="bean_mobileNo" depends="required,integer,validwhen">
+ <msg name="required" key="register.error.mobile.required" /> 
+  <msg name="integer" key="register.error.mobile.integer" /> 
+  <msg name="validwhen" key="register.error.mobile.mismatchpwd" /> 
+ <var>
+  <var-name>test</var-name> 
+  <var-value>(bean_cmobile ==*this*)</var-value> 
+  </var>
+  
+</field>
+
+<field property="bean_phoneNo" depends="required,integer">
+ <msg name="required" key="register.error.phnum.required" /> 
+  <msg name="integer" key="register.error.phnum.integer" /> 
+ 
+</field>
+
+<field property="bean_password" depends="required,minlength,mask,maxlength">
+  <msg name="required" key="register.error.password.required" /> 
+  <msg name="mask" key="register.error.password.invalid" /> 
+  <msg name="minlength" key="register.error.password.minlength" /> 
+  <msg name="maxlength" key="register.error.password.maxlength" /> 
+ <var>
+  <var-name>mask</var-name> 
+  <var-value>^[a-zA-Z0-9]*$</var-value> 
+  </var>
+ <var>
+  <var-name>minlength</var-name> 
+  <var-value>8</var-value> 
+  </var>
+ <var>
+  <var-name>maxlength</var-name> 
+  <var-value>20</var-value> 
+  </var>
+  </field>
+  
+  <field property="bean_confirmPwd" depends="required,validwhen">
+  <msg name="required" key="register.error.cpassword.required" /> 
+  <msg name="validwhen" key="register.error.password.mismatchpwd" /> 
+ <var>
+  <var-name>test</var-name> 
+  <var-value>(bean_password ==*this*)</var-value> 
+  </var>
+  </field>
+
+<field property="bean_height" depends="required,integer">
+ <msg name="required" key="register.error.height.required" /> 
+  <msg name="integer" key="register.error.height.integer" /> 
+ 
+</field>
+
+<field property="bean_interests"  depends="required,mask">
+ <msg name="required" key="register.error.interests.required" /> 
+  <msg name="mask" key="register.error.interests.invalid" /> 
+<var>
+  <var-name>mask</var-name>
+  <var-value>^[a-zA-Z]*$</var-value>
+  </var>
+</field> 
+
+<field property="bean_aboutMe"  depends="required,mask">
+ <msg name="required" key="register.error.aboutme.required" /> 
+  <msg name="mask" key="register.error.aboutme.invalid" /> 
+<var>
+  <var-name>mask</var-name>
+  <var-value>^[a-zA-Z]*$</var-value>
+  </var>
+</field> 
+
+<field property="bean_aboutPartner"  depends="required,mask">
+ <msg name="required" key="register.error.aboutpartner.required" /> 
+  <msg name="mask" key="register.error.aboutpartner.invalid" /> 
+<var>
+  <var-name>mask</var-name>
+  <var-value>^[a-zA-Z]*$</var-value>
+  </var>
+</field> 
+</form>
+
+</formset>
+</form-validation>

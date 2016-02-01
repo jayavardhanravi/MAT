@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd"> 
+
+<struts-config>
+
+    <form-beans>
+   
+         <form-bean name="SearchForm" type="com.tcs.matrimony.form.SearchForm" /> 
+         
+         
+        <form-bean name="RegisterForm1" type="com.tcs.matrimony.form.RegisterForm">
+        </form-bean>
+        <form-bean name="RegisterForm" type="com.tcs.matrimony.form.RegisterForm">
+        </form-bean>
+        
+        <form-bean name="PhotoForm" type="com.tcs.matrimony.form.RegisterForm">
+        </form-bean>
+
+    <form-bean name="NetorkForm" type="com.tcs.matrimony.form.RegisterForm">
+        </form-bean>
+        
+        <form-bean name="RegisterForm2" type="com.tcs.matrimony.form.RegisterForm">
+        </form-bean>
+		
+		
+		 <form-bean name="RetrieveForm" type="com.tcs.matrimony.form.RegisterForm">
+        </form-bean>
+		
+		 <form-bean name="RegisterForm3" type="com.tcs.matrimony.form.RegisterForm">
+        </form-bean>
+        
+           <form-bean name="RegisterForm4" type="com.tcs.matrimony.form.RegisterForm">
+        </form-bean>
+        
+		<form-bean name="EventForm" type="com.tcs.matrimony.form.EventForm">
+        </form-bean>
+        
+        <form-bean name="EventForm1" type="com.tcs.matrimony.form.EventForm">
+        </form-bean>
+        <form-bean name="EventIndexForm" type="com.tcs.matrimony.form.EventForm">
+        </form-bean>
+		
+		<form-bean name="EventSearchForm" type="com.tcs.matrimony.form.EventForm">
+        </form-bean>
+        
+        <form-bean name="EventPurchaseForm" type="com.tcs.matrimony.form.EventForm">
+        </form-bean>	
+		
+		
+		 <form-bean name="EventSearchForm1" type="com.tcs.matrimony.form.EventForm">
+        </form-bean>
+        
+        <form-bean name="EventPaymentForm" type="com.tcs.matrimony.form.EventForm">
+        </form-bean>
+        
+         <form-bean name="EventPaymentForm1" type="com.tcs.matrimony.form.EventForm">
+        </form-bean>
+        
+         <form-bean name="EventPaymentForm2" type="com.tcs.matrimony.form.EventForm">
+        </form-bean>
+        	
+       <form-bean name="LoginForm" type="com.tcs.matrimony.form.LoginForm" /> 
+
+  <form-bean name="ChangePwdVal" type="com.tcs.matrimony.form.LoginForm" />
+  
+  <form-bean name="ForgotPassword" type="com.tcs.matrimony.form.LoginForm" /> 
+  <form-bean name="ForgotPassword1" type="com.tcs.matrimony.form.LoginForm" /> 
+  <form-bean name="SecurityForm" type="com.tcs.matrimony.form.LoginForm" />  	
+	</form-beans>
+	
+	
+	
+
+	
+	<action-mappings>
+	
+	
+	     <action input="/uploadimage.jsp" name="PhotoForm" path="/upload" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction" >
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	      <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	      <action input="/viewimage.jsp" name="RetrieveForm" path="/viewimage" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction" >
+	     <forward name="DISPLAYIMAGE" path="/DisplayImage.jsp"/>
+	      <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	     <action input="/viewimage.jsp" name="RetrieveForm" path="/viewalbum" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction" >
+	     <forward name="DISPLAYIMAGE" path="/DisplayImage.jsp"/>
+	      <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	     <action input="/Registration.jsp" name="RegisterForm" path="/register" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	    
+	     <action input="/enter.jsp" name="RegisterForm3" path="/retrieve" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="PROFILE" path="/profile.jsp"/>
+	     
+	     </action>
+	       <action input="/home.jsp" name="RegisterForm2" path="/profile" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="SUCCESS" path="/enter.jsp"/>
+	 
+	     </action>
+	      <action input="/profile.jsp" name="RegisterForm4" path="/update" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction" >
+	     <forward name="BASIC" path="/basic.jsp"/>
+	     <forward name="LOCATION" path="/location.jsp"/>
+	     <forward name="CONTACT" path="/contact.jsp"/>
+	      <forward name="RELIGION" path="/religion.jsp"/>
+	     <forward name="HOBBIES" path="/hobbies.jsp"/>
+	     <forward name="INTERESTS" path="/interests.jsp"/>
+	     <forward name="ABOUTME" path="/aboutme.jsp"/>
+	       <forward name="FAMILY" path="/family.jsp"/>
+	         <forward name="PROF" path="/prof.jsp"/>
+	     <forward name="PBASIC" path="/pbasic.jsp"/>
+	     <forward name="PRELIGION" path="/preligion.jsp"/>
+	     <forward name="PLOCATION" path="/plocation.jsp"/>
+	     <forward name="PPROF" path="/pprof.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	      <action input="/basic.jsp" name="RegisterForm" path="/basic" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction" >
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	      <action input="/location.jsp" name="RegisterForm" path="/location" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction" >
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	      <action input="/aboutme.jsp" name="RegisterForm" path="/aboutme" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction" >
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	      <action input="/hobbies.jsp" name="RegisterForm" path="/hobbies" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction" >
+	  <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	      <action input="/interests.jsp" name="RegisterForm" path="/interests" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	      <action input="/contact.jsp" name="RegisterForm" path="/contactupdate" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	  <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	      <action input="/family.jsp" name="RegisterForm" path="/family" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	  <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	      <action input="/religion.jsp" name="RegisterForm" path="/religion" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	  <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	     
+	      <action input="/prof.jsp" name="RegisterForm" path="/prof" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	  <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	  
+	  <action input="/pbasic.jsp" name="RegisterForm" path="/pbasic" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	  <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	       
+	  <action input="/preligion.jsp" name="RegisterForm" path="/preligion" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	  <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	    
+	  <action input="/plocation.jsp" name="RegisterForm" path="/plocation" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	  <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	       
+	  <action input="/pprof.jsp" name="RegisterForm" path="/pprof" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	  <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	  
+	   <action input="/login.jsp" name="RegisterForm1" path="/search" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="SUCCESS" path="/Registration.jsp"/>
+
+	     </action>
+	     
+	     
+	   <action input="/login.jsp" name="RegisterForm" path="/ForgotPassword" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="SUCCESS" path="/Registration.jsp"/>
+
+	  </action>
+	     
+	      
+	        <action input="/pbasic.jsp" name="RegisterForm" path="/pbasic" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="BASIC" path="/basic.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	      <action input="/plocation.jsp" name="RegisterForm" path="/plocation" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="BASIC" path="/basic.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	           <action input="/pprof.jsp" name="RegisterForm" path="/pprof" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="BASIC" path="/basic.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	     <action input="/search.jsp" name="RegisterForm" path="/like" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	      <action input="/mynetwork.jsp" name="NetworkForm" path="/network" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="MYLIKES" path="/mylikes.jsp"/>
+	     <forward name="MYFOLLOWERS" path="/mylikes.jsp" />
+	     <forward name="MYRELATIONS" path="/myrelations.jsp" />
+	     <forward name="RMESSAGES" path="/chatdetails.jsp"/>
+	     <forward name="SENTMESSAGES" path="/chatdetails.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	     <action input="/myrelations.jsp" name="RegisterForm" path="/chat" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="MESSAGE" path="/message.jsp"/>
+	     </action>
+	     
+	     <action input="/message.jsp" name="RegisterForm" path="/chatmessage" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	      <action input="/chatdetails.jsp" name="RegisterForm" path="/reply" validate="true" scope="session" type="com.tcs.matrimony.action.RegisterAction">
+	     <forward name="SEND" path="/message.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+<!--	      Configurations for Event Management -->
+	     
+	     
+	     <action input="/eventhome.jsp" name="EventForm1" path="/event" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="REGISTER" path="/pages/eventmanagement/register.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	     
+	      <action input="/pages/eventmanagement/register.jsp" name="EventForm" path="/eventreg" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="SUCCESS" path="/pages/eventmanagement/elogin.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	     
+	     <action input="/pages/eventmanagement/eventindex.jsp" name="EventIndexForm" path="/eventindex" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="SEARCH" path="/pages/eventmanagement/eventsearch.jsp"/>
+	      <forward name="PURCHASE" path="/pages/eventmanagement/eventpurchase.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	     
+	     <action input="/pages/eventmanagement/eventsearch.jsp" name="EventSearchForm" path="/eventsearch" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="SEARCHRESULT" path="/pages/eventmanagement/eventsearchresult.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	     
+	     <action input="/pages/eventmanagement/eventsearchresult.jsp" name="EventSearchForm1" path="/contact" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="POPUP" path="/pages/eventmanagement/popup.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	     
+	      <action input="/pages/eventmanagement/eventpurchase.jsp" name="EventPurchaseForm" path="/click" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="SUCCESS" path="/pages/eventmanagement/eventpurchase.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	     
+	      <action input="/pages/eventmanagement/eventpurchase.jsp" name="EventPurchaseForm" path="/pay" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="PAYMENT" path="/pages/eventmanagement/packagepayment.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	     
+	     <action input="/pages/eventmanagement/packagepayment.jsp" name="EventPaymentForm" path="/payment" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="SUCCESS" path="/pages/eventmanagement/eventpaymentgateway.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	     
+	     <action input="/pages/eventmanagement/eventpaymentgateway.jsp" name="EventPaymentForm1" path="/gateway" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="SUCCESS" path="/pages/eventmanagement/secureaccess.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	      <action input="/pages/eventmanagement/secureaccess.jsp" name="EventPaymentForm2" path="/secureaccess" validate="true" scope="session" type="com.tcs.matrimony.action.EventAction" parameter="bn_action">
+	     <forward name="SUCCESS" path="/pages/eventmanagement/success.jsp"/>
+	     <forward name="FAILURE" path="/pages/failure.jsp" />
+	     </action>
+	     
+	     
+	<!--	      Configurations for Search -->     
+	     
+	     <action path="/profsearch" name="SearchForm" type="com.tcs.matrimony.action.SearchAction">
+  <forward name="success" path="/search_results.jsp" /> 
+  <forward name="failed" path="/failure.jsp" /> 
+
+  </action>
+  
+   <action input="/index.jsp" name="SearchForm" path="/index" validate="true" scope="session" type="com.tcs.matrimony.action.SearchAction" >
+	     <forward name="SUCCESS" path="/searchprof.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	     <action input="/search_results.jsp" name="SearchForm" path="/searchDetails" validate="true" scope="session" type="com.tcs.matrimony.action.SearchAction" >
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	  
+	     </action>
+	     
+	
+	
+	<!--	      Configurations for Login --> 
+	     <action path="/login" name="LoginForm" validate="true" type="com.tcs.matrimony.action.LoginAction" input="/index.jsp">
+  <forward name="success" path="/welcome.jsp" /> 
+  <forward name="failed" path="/index.jsp" /> 
+  <forward name="error" path="/error.jsp" /> 
+  </action>
+  
+  
+  <action path="/viewdetails" name="ViewForm" type="com.tcs.matrimony.action.ViewDetailsAction">
+  <forward name="success" path="/view_details.jsp" /> 
+  <forward name="failed" path="/index.jsp" /> 
+  <forward name="error" path="/error.jsp" />
+  </action>
+  
+  
+  <action path="/chg_pwd" name="ChangePwdVal" type="com.tcs.matrimony.action.ChangePwdAction" validate="true" scope="session" input="/newchangepassword.jsp">
+  <forward name="success" path="/success.jsp" /> 
+  <forward name="failed" path="/newchangepassword.jsp" /> 
+  <forward name="error" path="/error.jsp" /> 
+  </action>
+  
+	<action input="/userid.jsp" name="ForgotPassword" path="/forgotpassword" validate="true" scope="session" type="com.tcs.matrimony.action.LoginAction">
+	     <forward name="SUCCESS" path="/forgotpassword.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	 	</action>     
+	 	
+	 	<action input="/forgotpassword.jsp" name="ForgotPassword1" path="/checkSecurity" validate="true" scope="session" type="com.tcs.matrimony.action.LoginAction">
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	     <action input="/resetsecurity.jsp" name="SecurityForm" path="/resetsecurity" validate="true" scope="session" type="com.tcs.matrimony.action.LoginAction">
+	     <forward name="SUCCESS" path="/success.jsp"/>
+	     <forward name="FAILURE" path="/failure.jsp" />
+	     </action>
+	     
+	          
+	</action-mappings>
+	
+	<message-resources parameter="com.tcs.matrimony.resources.ApplicationResources">
+	</message-resources>
+	
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+    </plug-in>
+	
+</struts-config>
